@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 
-@NgModule()
+@NgModule({
+    declarations:[],
+    imports:[],
+    exports:[],
+    providers:[],
+})
 export class AdministartionModule {
 
 }
