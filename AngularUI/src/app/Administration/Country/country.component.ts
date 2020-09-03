@@ -10,41 +10,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class CountyComponent implements OnInit {
 
+    title = 'Country';
+
     constructor() {
         // constructor called first time before the ngOnInit()
      }
-   
-     ngOnChanges() {
 
+     ngOnInit(): void {
+        this.title = 'country master';
      }
 
-     ngOnInit() {
-        // called after the constructor and called  after the first ngOnChanges();
-     }
-
-    
-
-    ngDOCheck() {
-
-    }
-
-    ngAfterContentInit() {
-
-    }
-
-    ngAfterContentChecked() {
-        
-    }
-
-    ngAfterViewInit() {
-        
-    }
-
-    ngAfterViewChecked() {
-        
-    }
-
-    ngOnDestroy() {
-
-    }
 }

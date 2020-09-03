@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // All Module (Adminstration, Vender & User)'
 import { AdministartionModule } from './Administration/administration.module';
+import { VenderModule } from './Vendor/vender.module';
+import { UserModule } from './User/user.module';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,15 @@ import { AdministartionModule } from './Administration/administration.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AdministartionModule,
     FormsModule,
     ReactiveFormsModule,
+    AdministartionModule,
+    VenderModule,
+    UserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
