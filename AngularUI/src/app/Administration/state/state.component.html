@@ -1,0 +1,21 @@
+<p>this is state Form</p>
+<form [formGroup]="stateForm" (ngSubmit)="onSubmit()">
+    <div class="col-lg-3 col-md-4 col-md-6">
+        <div class="form-group">
+            <label>Country</label>
+            <input type="text" class="form-control" formControlName="CountryId" placeholder="" />
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-md-6">
+        <div class="form-group">
+            <label>State Name</label>
+            <input type="text" class="form-control" formControlName="StateName" placeholder="Enter State Name" [ngClass]="{'is-invalid':submitted && errorControl.stateName.errors}"/>
+            <div *ngIf="submitted && errorControl.stateName.errors" class="invalid-feedback">
+                <div *ngIf="errorControl.stateName.errors.required">Enter State Name</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-md-6">
+        <button type="submit" class="btn btn-success">Add State</button>
+    </div>
+</form>
