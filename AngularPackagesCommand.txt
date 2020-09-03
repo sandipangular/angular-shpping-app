@@ -1,0 +1,2 @@
+// Bootstrap and Jquery
+npm install bootstrap@3 jquery --save
