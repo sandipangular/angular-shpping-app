@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { stateComponent } from './state/state.component';
+import { CountyComponent } from './Country/country.component';
 
 const routes: Routes = [
-  {path: 'state', component: stateComponent}
+  { path: 'Administration',
+    children: [
+      { path: 'Country', component: CountyComponent},
+      { path: 'state', component: stateComponent}
+    ]
+  }
 ];
 
 @NgModule({

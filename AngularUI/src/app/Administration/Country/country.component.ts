@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
 
 
 @Component({
@@ -10,14 +11,16 @@ import { Component, OnInit } from '@angular/core';
 
 export class CountyComponent implements OnInit {
 
-    title = 'Country';
+    CountryForm: FormGroup;
 
-    constructor() {
+    constructor(private fb: FormBuilder) {
         // constructor called first time before the ngOnInit()
      }
 
      ngOnInit(): void {
-        this.title = 'country master';
+         this.CountryForm = this.fb.group({
+             CountryName: ['', Validators.required]
+         });
      }
 
 }
