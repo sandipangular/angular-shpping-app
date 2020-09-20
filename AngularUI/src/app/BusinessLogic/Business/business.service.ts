@@ -1,54 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+export class BusinessService<T>
+{
+    constructor(private httpClient:HttpClient){}
 
-@Injectable()
-export class BusinessService {
-    baseUrl = 'http://localhost:3000/employees';
-    constructor(private httpClient: HttpClient) {}
-
-    Get<T>(): Observable<T> {
-        return this.httpClient.get<T>(this.baseUrl)
-            .pipe(catchError(this.handleError));
+    HttpGet<T>(endPoint: string): Observable<T> {
+        return this.httpClient.get<T>(endPoint);
     }
 
-    GetById<T>(id: string): Observable<T> {
-        return this.httpClient.get<T>(`${this.baseUrl}/${id}`)
-            .pipe(catchError(this.handleError));
+    HttpGetById<T>(endPoint:string, Id:string):Observable<T> {
+        return this.httpClient.get<T>(`${endPoint}/${Id}`);
     }
 
-    Insert<T>(data: T): Observable<T> {
-        return this.httpClient.post<T>(this.baseUrl, data, {
+    HttpPost<T>(endPoint:string, argument: T): Observable<T> {
+        return this.httpClient.post<T>(endPoint, argument, {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             })
         })
-        .pipe(catchError(this.handleError));
     }
 
-    Update<T>(data: T): Observable<T> {
-        return this.httpClient.put<T>(this.baseUrl, data, {
+    HttpPut<T>(endPoint:string, argument: T): Observable<T> {
+        return this.httpClient.put<any>(endPoint, argument,{
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             })
         })
-        .pipe(catchError(this.handleError));
     }
 
-    Delete<T>(id: string): Observable<T> {
-        return this.httpClient.delete<T>(`${this.baseUrl}/${id}`)
-            .pipe(catchError(this.handleError));
+    HttpDelete<T>(endPoint:string, Id:string): Observable<T> {
+        return this.httpClient.delete<T>(`${endPoint}/${Id}`);
     }
 
-    // tslint:disable-next-line:typedef
-    private handleError(errorResponse: HttpErrorResponse) {
-        if (errorResponse.error instanceof ErrorEvent) {
-            console.error('Client Side Error :', errorResponse.error.message);
-        } else {
-            console.error('Server Side Error :', errorResponse);
-        }
-        return throwError('There is a problem with the service. We are notified & working on it. Please try again later.');
-    }
+    //https://arjunphp.com/angular-global-api-service-request-method - Single Service Handle all HttpRequest
+
 }

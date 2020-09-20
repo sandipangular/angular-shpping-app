@@ -6,3 +6,5 @@ export class BusinessClass {
     public LastChanged: any;
     public Remark: string;
 }
+
+
