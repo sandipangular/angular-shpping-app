@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { stateComponent } from './state/state.component';
+
+//Component
 import { CountyComponent } from './Country/country.component';
+import { StateComponent } from './State/state.component';
 
 const routes: Routes = [
   { path: 'Administration',
     children: [
       { path: 'Country', component: CountyComponent},
-      { path: 'state', component: stateComponent}
+      { path: 'State', component: StateComponent}
     ]
   }
 ];
 
 @NgModule({
-  declarations: [
-    stateComponent
-  ],
+  declarations: [],
     imports: [
       RouterModule.forChild(routes)
     ],
-    exports: [RouterModule]
+    exports: []
   })
 
 export class AdministrationRoutingModule {

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export class BusinessService<T>
+@Injectable()
+export class BusinessService
 {
     constructor(private httpClient:HttpClient){}
 
-    HttpGet<T>(endPoint: string): Observable<T> {
-        return this.httpClient.get<T>(endPoint);
+    HttpGet<T>(endPoint: string): Observable<T[]> {
+        return this.httpClient.get<T[]>(endPoint);
     }
 
     HttpGetById<T>(endPoint:string, Id:string):Observable<T> {
@@ -35,5 +36,8 @@ export class BusinessService<T>
     }
 
     //https://arjunphp.com/angular-global-api-service-request-method - Single Service Handle all HttpRequest
+}
 
+export class CommanConfigration {
+    static EndPoint = 'http://localhost:3000/employees';
 }

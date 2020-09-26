@@ -9,7 +9,7 @@ import { State } from '../../BusinessLogic/Model/state';
     styleUrls: ['./state.component.css']
   })
 
-  export class stateComponent implements OnInit{
+  export class StateComponent implements OnInit{
     stateForm:FormGroup;
     submitted=false;
     constructor(private _FB:FormBuilder){}

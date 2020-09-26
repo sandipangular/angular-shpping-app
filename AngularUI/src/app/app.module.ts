@@ -2,8 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+
+//BusinessService
+import { BusinessService } from './BusinessLogic/Business/business.service';
+
+//Component
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Interceptor
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -21,20 +25,21 @@ import { from } from 'rxjs';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     AdministartionModule,
     VenderModule,
     UserModule,
+    HttpClientModule,
     AppRoutingModule,
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
     useClass:ErrorInterceptor,
-    multi:true
-  }],
-  bootstrap: [AppComponent]
+    multi:true,
+  },
+  BusinessService
+],
+  bootstrap: [AppComponent],
+  exports:[]
 })
 
 export class AppModule { }
